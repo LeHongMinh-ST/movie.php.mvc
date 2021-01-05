@@ -11,8 +11,8 @@ class Connection
     {
         $this->servername = 'localhost';
         $this->username = 'root';
-        $this->password = '';
-        $this->dbname = 'core.php.mvc';
+        $this->password = '798960';
+        $this->dbname = 'movie.php.mvc';
     }
 
     function connect()
