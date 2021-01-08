@@ -8,10 +8,10 @@ class Controller
         return new $controllers;
     }
 
-    public function views($views, $data = [])
+    public function views($view, $data = [], $master = MASTER_BACKEND)
     {
         extract($data);
-        require_once "./app/views/" . $views . ".php";
+        require_once "./app/views/" . $master . ".php";
     }
 
     public function redirect($path)
