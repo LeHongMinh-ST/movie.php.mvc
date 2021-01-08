@@ -2,11 +2,8 @@
 
 class Controller
 {
-    public function getController($controllers)
-    {
-        require_once "app/controllers/" . $controllers . ".php";
-        return new $controllers;
-    }
+    const HOME_ADMIN = URL . '/admin/dashboard';
+    const LOGIN = URL . '/admin/login';
 
     public function views($view, $data = [], $master = MASTER_BACKEND)
     {
@@ -17,6 +14,10 @@ class Controller
     public function redirect($path)
     {
         header("location: $path");
+    }
+
+    public function isAuth(){
+        return !empty($_SESSION['auth']);
     }
 }
 

@@ -65,11 +65,16 @@
                             <button class="header__search-btn" type="button">
                                 <i class="icon ion-ios-search"></i>
                             </button>
+                            <?php if (!empty($_SESSION['auth'])) {?>
+                                <form action="<?php echo URL ?>/admin/logout" method="post">
+                                    <button class="header__sign-in">
+                                        <i class="icon ion-ios-log-in"></i>
+                                        <span>Đăng xuất</span>
+                                    </button>
+                                </form>
+                            <?php } ?>
 
-                            <a href="signin.html" class="header__sign-in">
-                                <i class="icon ion-ios-log-in"></i>
-                                <span>sign in</span>
-                            </a>
+
                         </div>
                         <!-- end header auth -->
 
