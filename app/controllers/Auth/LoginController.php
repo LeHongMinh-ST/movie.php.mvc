@@ -6,13 +6,15 @@ class LoginController extends Controller
 {
     public function showFormLogin()
     {
+        if ($this->isAuth()) {
+            return $this->redirect(self::HOME_ADMIN);
+        }
         return $this->views(null, [], 'auth/login');
     }
 
     public function login()
     {
         $input = $_POST;
-
         $modelUser = new User();
         $users = $modelUser->get();
 
@@ -32,8 +34,9 @@ class LoginController extends Controller
         }
     }
 
-    public function logout(){
-        if($this->isAuth()){
+    public function logout()
+    {
+        if ($this->isAuth()) {
             unset($_SESSION['auth']);
             return $this->redirect(self::LOGIN);
         }

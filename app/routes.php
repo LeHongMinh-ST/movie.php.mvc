@@ -6,6 +6,9 @@ $router->post('/admin/login','Auth/LoginController@login');
 $router->post('/admin/logout','Auth/LoginController@logout');
 
 //Backend
+$router->get('/admin',function (){
+    header('location: ' . URL . '/admin/dashboard');
+});
 $router->get('/admin/dashboard','Backend/DashboardController@index');
 
 //Frontend
