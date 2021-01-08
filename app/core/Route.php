@@ -8,12 +8,12 @@ class Route{
      * - Mỗi route sẽ gôm url, method, action và params
      * 
      */
-    private $__routes;
+    private $routes;
 
     // Hàm khởi tạo
     public function __construct()
     {
-        $this->__routes = [];
+        $this->routes = [];
     }
 
     /**
@@ -29,7 +29,7 @@ class Route{
     public function get($url, $action)
     {
             // Xử lý phương thức GET
-            $this->__request($url, 'GET', $action);
+            $this->request($url, 'GET', $action);
     }
 
     /**
@@ -45,7 +45,7 @@ class Route{
     public function post($url, $action)
     {
          // Xử lý phương thức POST
-         $this->__request($url, 'POST', $action);
+         $this->request($url, 'POST', $action);
     }
 
     /**
@@ -59,7 +59,7 @@ class Route{
      * @return void
      * 
      */
-    private function __request($url,$method, $action)
+    private function request($url,$method, $action)
     {
         // kiểm tra xem URL có chứa param không. VD: post/{id}
         if (preg_match_all('/({([a-zA-Z]+)})/', $url, $params)) {
@@ -79,14 +79,14 @@ class Route{
         ];
         
         // Thêm route vào router.
-        array_push($this->__routes, $route);
+        array_push($this->routes, $route);
     }
 
 
     public function map($url, $method)
     {
         // Lặp qua các route trong ứng dụng, kiểm tra có chứa url được gọi không
-        foreach ($this->__routes as $route) {
+        foreach ($this->routes as $route) {
 
             // nếu route có $method
             if ($route['method'] == $method) {
@@ -95,7 +95,7 @@ class Route{
                 $reg = '/^' . $route['url'] . '$/';
                 if (preg_match($reg, $url, $params)) {
                     array_shift($params);
-                    $this->__call_action_route($route['action'], $params);
+                    $this->call_action_route($route['action'], $params);
                     return;
                 }
             }
@@ -116,7 +116,7 @@ class Route{
      * @return void
      * 
      */
-    private function __call_action_route($action, $params)
+    private function call_action_route($action, $params)
     {
         // Nếu $action là một callback (một hàm).
         if (is_callable($action)) {
