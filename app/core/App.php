@@ -1,5 +1,6 @@
 <?php
 require_once 'app/core/Route.php';
+require_once 'helper.php';
 
 class App{
     public function __construct()

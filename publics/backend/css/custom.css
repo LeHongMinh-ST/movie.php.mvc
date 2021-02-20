@@ -1,0 +1,16 @@
+.action-column{
+    display: flex;
+}
+
+.action-column a{
+    margin-right: 10px;
+    height: 38px;
+}
+
+.image-movie img{
+    width: 100px;
+}
+
+.name-movie a{
+    text-decoration: none;
+}

@@ -29,7 +29,7 @@ class Model
 
         $data = array();
 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_object()) {
             $data[] = $row;
         }
 
@@ -76,7 +76,7 @@ class Model
 
         $data = array();
 
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_object()) {
             $data[] = $row;
         }
 
@@ -88,22 +88,33 @@ class Model
     *@params Array $data
     *@return Object
     */
-    public function where($where)
+    public function where($where,$operator = null, $value = null)
     {
         $string = '';
-        $i = 0;
-        foreach ($where as $column => $value) {
-            $string .= $column . " = " . "'" . $value . "'";
-            $i++;
+        if (is_array($where)){
 
-            if ($i != count($where)) {
-                $string .= " AND ";
+            $i = 0;
+
+            foreach ($where as $column => $value) {
+                $string .= $column . " = " . "'" . $value . "'";
+                $i++;
+
+                if ($i != count($where)) {
+                    $string .= " AND ";
+                }
             }
+
+            $this->condition = $string;
+            return $this;
         }
+
+        $string .= $where . " $operator " . "'" . $value . "'";
+
 
         $this->condition = $string;
 
         return $this;
+
     }
 
     /*
@@ -129,7 +140,7 @@ class Model
             $query = $query . $string_1;
 
             $result = $this->connection->query($query);
-            return $result->fetch_assoc();
+            return $result->fetch_object();
         }
 
         $col = ($this->col) ? $this->col : '*';
@@ -138,7 +149,7 @@ class Model
 
         $result = $this->connection->query($query);
 
-        return $result->fetch_assoc();
+        return $result->fetch_object();
     }
 
     public function find($id)
@@ -146,7 +157,8 @@ class Model
         $query = "SELECT * FROM  $this->table WHERE id = $id";
 
         $result = $this->connection->query($query);
-        return $result->fetch_assoc();
+
+        return $result->fetch_object();
     }
 
     /*

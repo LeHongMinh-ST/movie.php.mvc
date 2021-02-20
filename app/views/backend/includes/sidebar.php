@@ -35,8 +35,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Tạo mới</a>
-                <a class="collapse-item" href="register.html">Danh sách</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/categories/create">Tạo mới</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/categories">Danh sách</a>
             </div>
         </div>
     </li>
@@ -51,23 +51,23 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Tạo mới</a>
-                <a class="collapse-item" href="register.html">Danh sách</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/movies/create">Tạo mới</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/movies">Danh sách</a>
             </div>
         </div>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#video"
            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-video"></i>
             <span>Quản lý Video</span>
         </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+        <div id="video" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Tạo mới</a>
-                <a class="collapse-item" href="register.html">Danh sách</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/videos/create">Tạo mới</a>
+                <a class="collapse-item" href="<?php echo URL ?>/admin/videos">Danh sách</a>
             </div>
         </div>
     </li>

@@ -14,3 +14,4 @@
 
 <!-- Custom styles for this template-->
 <link href="<?php echo URL?>/publics/backend/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="<?php echo URL?>/publics/backend/css/custom.css" rel="stylesheet">

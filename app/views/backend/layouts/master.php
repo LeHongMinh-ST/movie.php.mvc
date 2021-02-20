@@ -17,7 +17,34 @@
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <?php require_once "app/views/backend/". $view .".php"?>
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <?php include_once 'app/views/backend/includes/topbar.php'?>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <?php require_once "app/views/backend/". $view .".php"?>
+
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Uyenvt Website 2020</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
     <!-- End of Content Wrapper -->
 
 </div>

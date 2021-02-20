@@ -19,6 +19,7 @@ class LoginController extends Controller
         $users = $modelUser->get();
 
         foreach ($users as $user) {
+            $user = (array) $user;
             if ($user['email'] == $input['email']) {
                 if ($user['password'] == md5($input['password'])) {
                     $_SESSION['auth'] = $user;

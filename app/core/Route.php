@@ -95,6 +95,7 @@ class Route{
                 $reg = '/^' . $route['url'] . '$/';
                 if (preg_match($reg, $url, $params)) {
                     array_shift($params);
+
                     $this->call_action_route($route['action'], $params);
                     return;
                 }
@@ -129,9 +130,9 @@ class Route{
             $action = explode('@', $action);
             $controller_name = 'app/controllers/' . $action[0] .'.php';
             require_once $controller_name;
-            
-            $controller_name = array_pop(explode('/',$action[0]));
+            $arrayController = explode('/',$action[0]);
 
+            $controller_name = array_pop($arrayController);
 
             $controller = new $controller_name();
             call_user_func_array([$controller, $action[1]], $params);

@@ -14,3 +14,4 @@
 <!-- Page level custom scripts -->
 <script src="<?php echo URL?>/publics/backend/js/demo/chart-area-demo.js"></script>
 <script src="<?php echo URL?>/publics/backend/js/demo/chart-pie-demo.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
