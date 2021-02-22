@@ -151,4 +151,8 @@ class HomeController extends Controller
 
         ], MASTER_FRONTEND);
     }
+
+    public function about(){
+        return $this->views('frontend/pages/about',[],MASTER_FRONTEND);
+    }
 }

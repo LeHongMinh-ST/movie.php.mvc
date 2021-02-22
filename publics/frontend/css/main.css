@@ -3720,3 +3720,7 @@ html:not([dir="rtl"]) .noUi-horizontal .noUi-handle {
 .img__cover_child{
   height: 240px!important;
 }
+
+.card__title{
+  white-space: normal!important;
+}

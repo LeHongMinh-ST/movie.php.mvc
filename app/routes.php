@@ -44,6 +44,7 @@ $router->get('/', function (){
 });
 
 $router->post('/search','Frontend/HomeController@search');
+$router->get('/about','Frontend/HomeController@about');
 $router->get('/movies','Frontend/HomeController@getAllMovie');
 $router->get('/movies/{slug}','Frontend/HomeController@showMovieDetail');
 $router->get('/tv-series','Frontend/HomeController@getAllTVSeries');

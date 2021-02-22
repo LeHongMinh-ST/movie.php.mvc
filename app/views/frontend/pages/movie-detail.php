@@ -20,7 +20,12 @@
                         <!-- card cover -->
                         <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
                             <div class="card__cover">
-                                <img src="<?php echo URL . $movie->image ?>" alt="">
+                                <?php if ($movie->image != "") { ?>
+                                    <img class="img__cover" src="<?php echo URL . $movie->image ?>" alt="">
+                                <?php } else { ?>
+                                    <img class="img__cover"
+                                         src="<?php echo URL . "/publics/backend/img/default.png" ?>" alt="">
+                                <?php } ?>
                             </div>
                         </div>
                         <!-- end card cover -->
@@ -64,7 +69,11 @@
 
             <!-- player -->
             <div class="col-12 col-xl-6">
-                <iFrame src="<?php echo $video->source ?>" width="540" height="320" allowfullscreen></iFrame>
+                <?php if(!empty($video->source)){?>
+                    <iFrame src="<?php echo $video->source ?>" width="540" height="320" allowfullscreen></iFrame>
+                <?php } else {?>
+                    <h2 class="content__title">Phim đang cập nhật</h2>
+                <?php }?>
             </div>
 
         </div>
