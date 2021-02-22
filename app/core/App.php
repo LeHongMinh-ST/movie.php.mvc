@@ -15,7 +15,6 @@ class App{
         // Lấy phương thức hiện tại của url đang được gọi. (GET | POST). Mặc định là GET.
         $method_url = !empty($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
 
-
         // map URL
         $router->map($request_url, $method_url);
     }

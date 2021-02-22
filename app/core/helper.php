@@ -1,4 +1,5 @@
 <?php
+require_once 'app/models/Category.php';
 function file_upload($target_dir, $input_name, $max_size, $formats_allowed_array)
 {
     $filename = strtotime(date('Y-m-d H:i:s')) . '.' . pathinfo(basename($_FILES[$input_name]["name"]), PATHINFO_EXTENSION);
@@ -51,4 +52,13 @@ function to_slug($str) {
     $str = preg_replace('/[^a-z0-9-\s]/', '', $str);
     $str = preg_replace('/([\s]+)/', '-', $str);
     return $str;
+}
+
+function get_categories($parent = null){
+    $model = new Category();
+    $category = $model;
+    if($parent !=null){
+        $category = $model->where(['parent_id'=>$parent]);
+    }
+    return $category->get();
 }

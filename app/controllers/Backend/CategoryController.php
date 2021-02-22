@@ -40,6 +40,7 @@ class CategoryController extends Controller
 
         try {
             $data['user_id'] = $_SESSION['auth']['id'];
+            $data['slug'] = to_slug($data['name']);
             $category = new Category();
 
             $success = $category->create($data);
@@ -76,7 +77,7 @@ class CategoryController extends Controller
 
         try {
             $category = new Category();
-
+            $data['slug'] = to_slug($data['name']) . strtotime(date('Y-m-d H:i:s'));
             $success = $category->update($id, $data);
             if ($success) {
                 return $this->redirect(URL . '/admin/categories');

@@ -9,7 +9,7 @@
         <div class="row">
             <!-- title -->
             <div class="col-12">
-                <h1 class="details__title"><?php echo $movie->name?></h1>
+                <h1 class="details__title"><?php echo $movie->name ?></h1>
             </div>
             <!-- end title -->
 
@@ -20,7 +20,7 @@
                         <!-- card cover -->
                         <div class="col-12 col-sm-4 col-md-4 col-lg-3 col-xl-5">
                             <div class="card__cover">
-                                <img src="<?php echo URL.$movie->image?>" alt="">
+                                <img src="<?php echo URL . $movie->image ?>" alt="">
                             </div>
                         </div>
                         <!-- end card cover -->
@@ -35,9 +35,24 @@
                                         <li>HD</li>
                                     </ul>
                                 </div>
+                                <ul class="card__meta">
+                                    <li><span>Danh mục:</span>
+                                        <?php foreach ($movie->category as $value) { ?>
+                                            <a href="<?php echo URL . '/category/' . $value->slug ?>"><?php echo $value->name ?></a>
+                                        <?php } ?>
+                                    </li>
+                                    <li><span>Thể loại:</span>
+                                        <?php if ($movie->type == 0) { ?>
+                                            <a href="<?php echo URL . '/movies'?>"">Phim lẻ</a>
+                                        <?php } else { ?>
+                                            <a href="<?php echo URL . '/tv-series'?>">Phim bộ</a>
+
+                                        <?php } ?>
+                                    </li>
+                                </ul>
 
                                 <div class="card__description card__description--details">
-                                    <?php echo $movie->description?>
+                                    <?php echo $movie->description ?>
                                 </div>
                             </div>
                         </div>

@@ -35,6 +35,21 @@
                                         <li>HD</li>
                                     </ul>
                                 </div>
+                                <ul class="card__meta">
+                                    <li><span>Danh mục:</span>
+                                        <?php foreach ($movie->category as $value) { ?>
+                                            <a href="<?php echo URL . '/category/' . $value->slug ?>"><?php echo $value->name ?></a>
+                                        <?php } ?>
+                                    </li>
+                                    <li><span>Thể loại:</span>
+                                        <?php if ($movie->type == 0) { ?>
+                                            <a href="<?php echo URL . '/movies'?>"">Phim lẻ</a>
+                                        <?php } else { ?>
+                                            <a href="<?php echo URL . '/tv-series'?>">Phim bộ</a>
+
+                                        <?php } ?>
+                                    </li>
+                                </ul>
 
 
                                 <div class="card__description card__description--details">

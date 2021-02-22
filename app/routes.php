@@ -43,11 +43,15 @@ $router->get('/', function (){
     header('location: '.URL.'/home');
 });
 
+$router->post('/search','Frontend/HomeController@search');
 $router->get('/movies','Frontend/HomeController@getAllMovie');
 $router->get('/movies/{slug}','Frontend/HomeController@showMovieDetail');
 $router->get('/tv-series','Frontend/HomeController@getAllTVSeries');
 $router->get('/tv-series/{slug}/{id}','Frontend/HomeController@showTVSeriesDetail');
 $router->get('/tv-series/{slug}','Frontend/HomeController@showTVSeriesDetail');
+$router->get('/category/{category}','Frontend/HomeController@getMovieOfCategory');
+
+
 
 
 ?>

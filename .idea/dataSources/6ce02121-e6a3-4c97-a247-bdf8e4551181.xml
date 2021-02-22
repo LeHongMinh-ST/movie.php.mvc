@@ -1134,110 +1134,114 @@
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="357" parent="341" name="PRIMARY">
+    <column id="357" parent="341" name="slug">
+      <Position>6</Position>
+      <DataType>varchar(255)|0s</DataType>
+    </column>
+    <key id="358" parent="341" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="358" parent="342" name="id">
+    <column id="359" parent="342" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="359" parent="342" name="name">
+    <column id="360" parent="342" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="360" parent="342" name="description">
+    <column id="361" parent="342" name="description">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="361" parent="342" name="user_id">
+    <column id="362" parent="342" name="user_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="362" parent="342" name="image">
+    <column id="363" parent="342" name="image">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="363" parent="342" name="type">
+    <column id="364" parent="342" name="type">
       <Position>6</Position>
       <Comment>0-movie
 1-tv series </Comment>
       <DataType>tinyint(4)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="364" parent="342" name="category_id">
+    <column id="365" parent="342" name="category_id">
       <Position>7</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="365" parent="342" name="slug">
+    <column id="366" parent="342" name="slug">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="366" parent="342" name="PRIMARY">
+    <key id="367" parent="342" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="367" parent="343" name="id">
+    <column id="368" parent="343" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="368" parent="343" name="name">
+    <column id="369" parent="343" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="369" parent="343" name="email">
+    <column id="370" parent="343" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="370" parent="343" name="password">
+    <column id="371" parent="343" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="371" parent="343" name="role">
+    <column id="372" parent="343" name="role">
       <Position>5</Position>
       <DataType>tinyint(4)|0s</DataType>
     </column>
-    <key id="372" parent="343" name="PRIMARY">
+    <key id="373" parent="343" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="373" parent="344" name="id">
+    <column id="374" parent="344" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="374" parent="344" name="name">
+    <column id="375" parent="344" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="375" parent="344" name="movie_id">
+    <column id="376" parent="344" name="movie_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="376" parent="344" name="description">
+    <column id="377" parent="344" name="description">
       <Position>4</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="377" parent="344" name="source">
+    <column id="378" parent="344" name="source">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="378" parent="344" name="user_id">
+    <column id="379" parent="344" name="user_id">
       <Position>6</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <key id="379" parent="344" name="PRIMARY">
+    <key id="380" parent="344" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
