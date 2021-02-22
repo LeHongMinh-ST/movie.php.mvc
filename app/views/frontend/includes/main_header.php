@@ -87,7 +87,7 @@
                 <div class="col-12">
                     <div class="header__search-content">
                         <input type="text" name="key" placeholder="Nhập vào phim cần tìm...">
-                        <button type="submit">search</button>
+                        <button type="submit">Tìm kiếm</button>
                     </div>
                 </div>
             </div>
