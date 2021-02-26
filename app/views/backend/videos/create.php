@@ -17,11 +17,17 @@
                         <div class="form-group">
                             <label>Tên video</label>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên video">
+                            <?php if (!empty($_SESSION['error']['name'])) {?>
+                                <span style="color: red"><?php echo $_SESSION['error']['name']; unset($_SESSION['error']['name']);?></span>
+                            <?php }?>
                         </div>
 
                         <div class="form-group">
                             <label>Source</label>
                             <input type="text" class="form-control" name="source" placeholder="Nhập source video">
+                            <?php if (!empty($_SESSION['error']['source'])) {?>
+                                <span style="color: red"><?php echo $_SESSION['error']['source']; unset($_SESSION['error']['source']);?></span>
+                            <?php }?>
                         </div>
 
                         <div class="form-group">

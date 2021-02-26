@@ -20,24 +20,27 @@
                         foreach ($videos as $video) { ?>
                             <tr>
                                 <td class="name-video">
-                                    <a href="<?php echo URL ?>/admin/videos/show/<?php echo $video->id ?>/edit">
+                                    <a href="<?php echo URL ?>/admin/videos/show/<?php echo $video->id ?>">
                                         <?php echo $video->name ?>
                                     </a>
                                 </td>
                                 <td>
                                     <?php echo $video->movie_id ?>
                                 </td>
-                                <td><?php echo $video->user_id ?></td>
+                                <td><?php echo $video->user ?></td>
                                 <td>
                                     <div class="action-column">
-                                        <a href="<?php echo URL ?>/admin/videos/show/<?php echo $video->id ?>/edit"
+                                        <a href="<?php echo URL ?>/admin/videos/show/<?php echo $video->id ?>"
                                            class="btn btn-secondary">Chi tiết</a>
-                                        <a href="<?php echo URL ?>/admin/videos/<?php echo $video->id ?>/edit"
-                                           class="btn btn-warning">Chỉnh sửa</a>
-                                        <form action="<?php echo URL ?>/admin/videos/delete/<?php echo $video->id ?>"
-                                              method="post">
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </form>
+
+                                        <?php if ($video->user_id == $_SESSION['auth']['id'] || $_SESSION['auth']['role'] == 1) { ?>
+                                            <a href="<?php echo URL ?>/admin/videos/<?php echo $video->id ?>/edit"
+                                               class="btn btn-warning">Chỉnh sửa</a>
+                                            <form action="<?php echo URL ?>/admin/videos/delete/<?php echo $video->id ?>"
+                                                  method="post">
+                                                <button class="btn btn-danger">Xóa</button>
+                                            </form>
+                                        <?php } ?>
                                     </div>
                                 </td>
                             </tr>

@@ -19,6 +19,9 @@
                             <label>Tên Phim</label>
                             <input type="text" class="form-control" name="name" placeholder="Tên Phim"
                                    value="<?php echo $movie->name ?>">
+                            <?php if (!empty($_SESSION['error']['name'])) {?>
+                                <span style="color: red"><?php echo $_SESSION['error']['name']; unset($_SESSION['error']['name']);?></span>
+                            <?php }?>
                         </div>
 
                         <div class="form-row">

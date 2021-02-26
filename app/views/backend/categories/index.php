@@ -31,15 +31,17 @@
                                     ?>
                                 </td>
                                 <td><?php echo $category->description ?></td>
-                                <td><?php echo $category->user_id ?></td>
+                                <td><?php echo $category->user ?></td>
                                 <td>
                                     <div class="action-column">
-                                        <a href="<?php echo URL ?>/admin/categories/<?php echo $category->id ?>/edit"
-                                           class="btn btn-warning">Chỉnh sửa</a>
-                                        <form action="<?php echo URL ?>/admin/categories/delete/<?php echo $category->id ?>"
-                                              method="post">
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </form>
+                                        <?php if ($category->user_id == $_SESSION['auth']['id'] || $_SESSION['auth']['role'] == 1) { ?>
+                                            <a href="<?php echo URL ?>/admin/categories/<?php echo $category->id ?>/edit"
+                                               class="btn btn-warning">Chỉnh sửa</a>
+                                            <form action="<?php echo URL ?>/admin/categories/delete/<?php echo $category->id ?>"
+                                                  method="post">
+                                                <button class="btn btn-danger">Xóa</button>
+                                            </form>
+                                        <?php } ?>
                                     </div>
                                 </td>
                             </tr>

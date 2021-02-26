@@ -5,6 +5,13 @@ require_once 'app/models/User.php';
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        if (!$this->isAuth()) {
+            return $this->redirect(URL . '/admin/login');
+        }
+    }
+
     public function index()
     {
         $model = new Category();
@@ -14,7 +21,7 @@ class CategoryController extends Controller
         foreach ($categories as $category) {
             $userModel = new User();
             $user = $userModel->find($category->user_id);
-            $category->user_id = $user->name;
+            $category->user = $user->name;
         }
 
         return $this->views('categories/index', [
@@ -39,12 +46,18 @@ class CategoryController extends Controller
         $data = $_POST;
 
         try {
+            if ($data['name'] == '') {
+                $_SESSION['error']['name'] = "Vui lòng nhập tên danh mục";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
             $data['user_id'] = $_SESSION['auth']['id'];
             $data['slug'] = to_slug($data['name']);
             $category = new Category();
 
             $success = $category->create($data);
             if ($success) {
+                $_SESSION['success'] = "Tạo mới thành công";
                 return $this->redirect(URL . '/admin/categories');
             }
 
@@ -65,6 +78,11 @@ class CategoryController extends Controller
         $category = $model->find($id);
         $categories = $model->where(['parent_id' => 0])->get();
 
+        if ($category->user_id != $_SESSION['auth']['id'] && $_SESSION['auth']['role'] != 1) {
+            echo 'ERROR - 403';
+            exit();
+        }
+
         return $this->views('categories/update', [
             'category' => $category,
             'categories' => $categories
@@ -76,10 +94,23 @@ class CategoryController extends Controller
         $data = $_POST;
 
         try {
-            $category = new Category();
+
+            if ($data['name'] == '') {
+                $_SESSION['error']['name'] = "Vui lòng nhập tên danh mục";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            $model = new Category();
+            $category = $model->find();
+
+            if ($category->user_id != $_SESSION['auth']['id'] && $_SESSION['auth']['role'] != 1) {
+                echo 'ERROR - 403';
+                exit();
+            }
             $data['slug'] = to_slug($data['name']) . strtotime(date('Y-m-d H:i:s'));
-            $success = $category->update($id, $data);
+            $success = $model->update($id, $data);
             if ($success) {
+                $_SESSION['success'] = "Cập nhật thành công";
                 return $this->redirect(URL . '/admin/categories');
             }
 
@@ -91,9 +122,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $model = new Category();
-
-        $category = $model->delete($id);
-
+        $category = $model->find();
+        if ($category->user_id != $_SESSION['auth']['id'] && $_SESSION['auth']['role'] != 1) {
+            echo 'ERROR - 403';
+            exit();
+        }
+        $model->delete($id);
+        $_SESSION['success'] = "Xóa thành công";
         return $this->redirect(URL . '/admin/categories');
     }
 }

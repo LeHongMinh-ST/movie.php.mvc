@@ -29,10 +29,9 @@ class LoginController extends Controller
                 $_SESSION['error']['password'] = "Mật khẩu không chính xác";
                 return $this->redirect(self::LOGIN);
             }
-
-            $_SESSION['error']['email'] = "Email không tồn tại";
-            return $this->redirect(self::LOGIN);
         }
+        $_SESSION['error']['email'] = "Email không tồn tại";
+        return $this->redirect(self::LOGIN);
     }
 
     public function logout()

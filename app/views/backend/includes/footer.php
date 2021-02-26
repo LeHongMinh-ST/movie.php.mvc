@@ -15,3 +15,9 @@
 <script src="<?php echo URL?>/publics/backend/js/demo/chart-area-demo.js"></script>
 <script src="<?php echo URL?>/publics/backend/js/demo/chart-pie-demo.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    <?php if (!empty($_SESSION['success'])) {?>
+        toastr.success('<?php echo $_SESSION['success']; unset($_SESSION['success']);?>')
+    <?php }?>
+</script>

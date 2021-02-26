@@ -29,7 +29,7 @@
                                     <?php } ?>
                                 </td>
                                 <td class="name-movie"><a
-                                            href="<?php echo URL ?>/admin/movies/show/<?php echo $movie->id ?>/edit"><?php echo $movie->name ?></a>
+                                            href="<?php echo URL ?>/admin/movies/show/<?php echo $movie->id ?>"><?php echo $movie->name ?></a>
                                 </td>
                                 <td><?php echo $movie->category_id ?></td>
                                 <td>
@@ -38,17 +38,19 @@
                                     else echo "Phim bộ";
                                     ?>
                                 </td>
-                                <td><?php echo $movie->user_id ?></td>
+                                <td><?php echo $movie->user ?></td>
                                 <td>
                                     <div class="action-column">
-                                        <a href="<?php echo URL ?>/admin/movies/show/<?php echo $movie->id ?>/edit"
+                                        <a href="<?php echo URL ?>/admin/movies/show/<?php echo $movie->id ?>"
                                            class="btn btn-secondary">Chi tiết</a>
-                                        <a href="<?php echo URL ?>/admin/movies/<?php echo $movie->id ?>/edit"
-                                           class="btn btn-warning">Chỉnh sửa</a>
-                                        <form action="<?php echo URL ?>/admin/movies/delete/<?php echo $movie->id ?>"
-                                              method="post">
-                                            <button class="btn btn-danger">Xóa</button>
-                                        </form>
+                                        <?php if ($movie->user_id == $_SESSION['auth']['id'] || $_SESSION['auth']['role'] == 1) { ?>
+                                            <a href="<?php echo URL ?>/admin/movies/<?php echo $movie->id ?>/edit"
+                                               class="btn btn-warning">Chỉnh sửa</a>
+                                            <form action="<?php echo URL ?>/admin/movies/delete/<?php echo $movie->id ?>"
+                                                  method="post">
+                                                <button class="btn btn-danger">Xóa</button>
+                                            </form>
+                                        <?php } ?>
                                     </div>
                                 </td>
                             </tr>
