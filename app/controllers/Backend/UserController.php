@@ -39,9 +39,28 @@ class UserController extends Controller
 
         try {
             $data['password'] = md5('123456');
-            $user = new User();
+            $model = new User();
 
-            $success = $user->create($data);
+            $users = $model->all();
+
+            if ($data['name'] == ''){
+                $_SESSION['error']['name'] = "Vui lòng nhập tên người dùng";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            if ($data['email'] == ''){
+                $_SESSION['error']['email'] = "Vui lòng nhập email";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            foreach ($users as $user){
+                if($data['email'] == $user->email){
+                    $_SESSION['error']['email'] = "Email đã tồn tại !";
+                    return $this->redirect($_SERVER['HTTP_REFERER']);
+                }
+            }
+
+            $success = $model->create($data);
             if ($success) {
                 $_SESSION['success'] = "Tạo mới thành công";
                 return $this->redirect(URL . '/admin/users');
@@ -74,11 +93,29 @@ class UserController extends Controller
         $data = $_POST;
 
         try {
-            $user = new User();
+            $model = new User();
 
-            $success = $user->update($id,$data);
+            $users = $model->where('id','<>',$id)->get();
+
+            if ($data['name'] == ''){
+                $_SESSION['error']['name'] = "Vui lòng nhập tên người dùng";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            if ($data['email'] == ''){
+                $_SESSION['error']['email'] = "Vui lòng nhập email";
+                return $this->redirect($_SERVER['HTTP_REFERER']);
+            }
+
+            foreach ($users as $user){
+                if($data['email'] == $user->email){
+                    $_SESSION['error']['email'] = "Email đã tồn tại !";
+                    return $this->redirect($_SERVER['HTTP_REFERER']);
+                }
+            }
+            $success = $model->update($id,$data);
             if ($success) {
-                $_SESSION['success'] = "Update thành công";
+                $_SESSION['success'] = "Cập nhật thành công";
                 return $this->redirect(URL . '/admin/users');
             }
 
@@ -137,6 +174,8 @@ class UserController extends Controller
 
             $model = new User();
 
+
+
             $model->update($auth['id'],$input);
             $_SESSION['success'] = "Cập nhật mật khẩu thành công";
             return $this->redirect(URL.'/admin');
@@ -165,6 +204,7 @@ class UserController extends Controller
             $input['password'] = md5($data['password']);
 
             $model = new User();
+
 
             $model->update($id,$input);
             $_SESSION['success'] = "Cập nhật mật khẩu thành công";

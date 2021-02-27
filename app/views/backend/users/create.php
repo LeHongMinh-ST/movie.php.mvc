@@ -17,11 +17,17 @@
                         <div class="form-group">
                             <label>Tên người dùng</label>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên người dùng">
+                            <?php if (!empty($_SESSION['error']['name'])) {?>
+                                <span style="color: red"><?php echo $_SESSION['error']['name']; unset($_SESSION['error']['name']);?></span>
+                            <?php }?>
                         </div>
 
                         <div class="form-group">
                             <label>Email</label>
                             <input type="text" class="form-control" name="email" placeholder="Nhập email">
+                            <?php if (!empty($_SESSION['error']['email'])) {?>
+                                <span style="color: red"><?php echo $_SESSION['error']['email']; unset($_SESSION['error']['email']);?></span>
+                            <?php }?>
                         </div>
 
                         <div class="form-group">
